@@ -1,0 +1,10 @@
+language: crystal
+script:
+- crystal spec
+- crystal tool format --check
+- find examples -name "*.cr" | xargs -L 1 crystal build --no-codegen
+- bash ./deploy.sh
+env:
+  global:
+  - ENCRYPTION_LABEL: 426ad98ed616
+  - COMMIT_AUTHOR_EMAIL: travis
